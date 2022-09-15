@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TMDB tests">
+    <test name="TMDB Log In">
+        <!--<parameter name="correctUsername" value=Environment variable></parameter>
+        <parameter name="correctPassword" value=Environment variable></parameter>-->
+        <parameter name="wrongPassword" value="1"></parameter>
+        <classes>
+            <class name="org.tmdb.tests.login.LogInTests"></class>
+        </classes>
+    </test>
+    <test name="TMDB Search">
+        <parameter name="movieTitle" value="Fight Club"></parameter>
+        <classes>
+            <class name="org.tmdb.tests.search.SearchTests"></class>
+        </classes>
+    </test>
+</suite>
