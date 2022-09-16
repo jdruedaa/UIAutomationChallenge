@@ -2,6 +2,7 @@ package org.tmdb.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,6 +19,12 @@ public class HomePage extends BasePage {
 
     @FindBy(css = "#inner_search_form [type='submit']")
     private WebElement searchButton;
+
+    @FindBy(css = ".k-item.k-menu-item.k-state-default.k-first .no_click.k-link.k-menu-link")
+    private WebElement moviesDropDownMenu;
+
+    @FindBy(css = ".k-item.k-menu-item.k-state-default.k-last [href='/movie/top-rated']")
+    private WebElement topRatedButton;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -36,5 +43,15 @@ public class HomePage extends BasePage {
         searchBar.sendKeys(movieTitle);
         explicitWait.until(ExpectedConditions.elementToBeClickable(searchButton)).click();
         return new SearchResultsPage(driver);
+    }
+
+    public TopRatedPage topRatedMovies()
+    {
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        System.out.println(topRatedButton.getText());
+        Actions action = new Actions(driver);
+        action.moveToElement(moviesDropDownMenu).perform();
+        explicitWait.until(ExpectedConditions.elementToBeClickable(topRatedButton)).click();
+        return new TopRatedPage(driver);
     }
 }

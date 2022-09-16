@@ -2,17 +2,21 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TMDB tests">
     <test name="TMDB Log In">
-        <!--<parameter name="correctUsername" value=Environment variable></parameter>
-        <parameter name="correctPassword" value=Environment variable></parameter>-->
-        <parameter name="wrongPassword" value="1"></parameter>
+        <parameter name="wrongPassword" value="1"/>
         <classes>
-            <class name="org.tmdb.tests.login.LogInTests"></class>
+            <class name="org.tmdb.tests.login.LogInTests"/>
         </classes>
     </test>
     <test name="TMDB Search">
-        <parameter name="movieTitle" value="Fight Club"></parameter>
+        <parameter name="movieTitle" value="Fight Club"/>
         <classes>
-            <class name="org.tmdb.tests.search.SearchTests"></class>
+            <class name="org.tmdb.tests.search.SearchTests"/>
+        </classes>
+    </test>
+    <test name="TMDB Top Rated">
+        <parameter name="filterGenre" value="action"/>
+        <classes>
+            <class name="org.tmdb.tests.toprated.TopRatedTests"/>
         </classes>
     </test>
 </suite>

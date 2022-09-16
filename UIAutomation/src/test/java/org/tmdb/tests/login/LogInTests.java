@@ -1,14 +1,12 @@
 package org.tmdb.tests.login;
 
-import org.testng.annotations.Parameters;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.tmdb.pages.HomePage;
 import org.tmdb.pages.LogInPage;
 import org.tmdb.pages.ProfilePage;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 import org.tmdb.utils.Hooks;
 
-import javax.swing.*;
 import java.util.NoSuchElementException;
 
 public class LogInTests extends Hooks {
@@ -28,7 +26,7 @@ public class LogInTests extends Hooks {
         ProfilePage profilePage = new ProfilePage(driver);
         try
         {
-            Assert.assertTrue(profilePage.getProfileUsername().equals(username), "The login attempt was " +
+            Assert.assertEquals(username, profilePage.getProfileUsername(), "The login attempt was " +
                     "not successful");
         }
         catch (NoSuchElementException noSuchElementException)
