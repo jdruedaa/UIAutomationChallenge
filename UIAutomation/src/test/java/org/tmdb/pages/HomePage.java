@@ -26,6 +26,12 @@ public class HomePage extends BasePage {
     @FindBy(css = ".k-item.k-menu-item.k-state-default.k-last [href='/movie/top-rated']")
     private WebElement topRatedButton;
 
+    @FindBy(css = "#popular_scroller .card.style_1 .poster")
+    private WebElement firstPopularMoviePoster;
+
+    @FindBy(css = "#popular_scroller #popular_scroller .column_content.flex.scroller.loaded")
+    private WebElement popularMoviesScroller;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -45,13 +51,19 @@ public class HomePage extends BasePage {
         return new SearchResultsPage(driver);
     }
 
-    public TopRatedPage topRatedMovies()
+    public TopRatedPage enterTopRatedMovies()
     {
         WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        System.out.println(topRatedButton.getText());
         Actions action = new Actions(driver);
         action.moveToElement(moviesDropDownMenu).perform();
         explicitWait.until(ExpectedConditions.elementToBeClickable(topRatedButton)).click();
         return new TopRatedPage(driver);
+    }
+
+    public MoviePage enterMovieWithActors()
+    {
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        explicitWait.until(ExpectedConditions.elementToBeClickable(firstPopularMoviePoster)).click();
+        return new MoviePage(driver);
     }
 }

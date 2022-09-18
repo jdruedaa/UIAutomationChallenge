@@ -15,7 +15,7 @@ public class TopRatedTests extends Hooks {
     public void FilterTopRatedMoviesByGenreTest(String filterGenre)
     {
         HomePage homePage = new HomePage(driver);
-        TopRatedPage topRatedPage = homePage.topRatedMovies();
+        TopRatedPage topRatedPage = homePage.enterTopRatedMovies();
         MoviePage moviePage;
         try {
             moviePage = topRatedPage.filterMoviesByActionGenre();

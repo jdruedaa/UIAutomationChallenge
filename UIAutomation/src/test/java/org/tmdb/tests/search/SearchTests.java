@@ -15,7 +15,7 @@ public class SearchTests extends Hooks {
     {
         HomePage homePage = new HomePage(driver);
         SearchResultsPage searchResultsPage = homePage.searchMovie(movieTitle); //parameter from xml movie title
-        Assert.assertEquals(movieTitle, searchResultsPage.getMovieSearchResult(), "The movie that was " +
+        Assert.assertEquals(movieTitle, searchResultsPage.findMovieSearchResult(movieTitle), "The movie that was " +
                 "searched for: " + movieTitle + ". doesn't match the search result.");
     }
 }
