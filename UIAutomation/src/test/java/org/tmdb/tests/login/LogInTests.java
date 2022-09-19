@@ -1,21 +1,20 @@
 package org.tmdb.tests.login;
 
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.tmdb.pages.HomePage;
 import org.tmdb.pages.LogInPage;
 import org.tmdb.pages.ProfilePage;
 import org.tmdb.utils.Hooks;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class LogInTests extends Hooks {
 
-    //Mirar Listeners de testng para cosas como screenshots. Y dataproviders, especialmente para data-driven frameworks
-
+    private final int numberOfErrorMessages = 3;
     @Test
-    //@Parameters({"correctUsername", "correctPassword"})
-    //public void SuccessfulLogInTest(String username, String password)
     public void SuccessfulLogInTest()
     {
         HomePage home = new HomePage(driver);
@@ -35,22 +34,18 @@ public class LogInTests extends Hooks {
         }
     }
 
-    /*
     @Test
-    @Parameters({"correctUsername", "wrongPassword"})
-    public void FailedLogInWithWrongCredentialsTest(String correctUsername, String wrongPassword)
+    @Parameters("wrongPassword")
+    public void FailedLogInWithWrongCredentialsTest(String wrongPassword)
     {
+        String username = System.getenv("MovieDB_username");
         HomePage home = new HomePage(driver);
         LogInPage logInPage = home.logIn();
-        logInPage.logInToUserAccount(correctUsername, wrongPassword);
-        try
-        {
-
-        }
-        catch (NoSuchElementException noSuchElementException)
-        {
-            System.out.println("Failed Login with Wrong Credentials Test Failed");
-        }
+        logInPage.logInToUserAccount(username, wrongPassword);
+        List<String> messages = logInPage.getLogInErrorMessages();
+        int foundNumberOfErrorMessages = messages.size();
+        Assert.assertEquals(foundNumberOfErrorMessages, numberOfErrorMessages, "There is a different number of " +
+                "error messages (" + foundNumberOfErrorMessages + ") compared to the expected (" + numberOfErrorMessages
+                + ")");
     }
-    */
 }
