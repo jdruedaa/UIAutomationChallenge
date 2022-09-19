@@ -1,5 +1,6 @@
 package org.tmdb.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -26,10 +27,7 @@ public class HomePage extends BasePage {
     @FindBy(css = ".k-item.k-menu-item.k-state-default.k-last [href='/movie/top-rated']")
     private WebElement topRatedButton;
 
-    @FindBy(css = "#popular_scroller .card.style_1 .poster")
-    private WebElement firstPopularMoviePoster;
-
-    @FindBy(css = "#popular_scroller #popular_scroller .column_content.flex.scroller.loaded")
+    @FindBy(css = "#popular_scroller")
     private WebElement popularMoviesScroller;
 
     public HomePage(WebDriver driver) {
@@ -62,7 +60,8 @@ public class HomePage extends BasePage {
 
     public MoviePage enterMovieWithActors()
     {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement firstPopularMoviePoster = popularMoviesScroller.findElement(By.cssSelector(".image a"));
         explicitWait.until(ExpectedConditions.elementToBeClickable(firstPopularMoviePoster)).click();
         return new MoviePage(driver);
     }

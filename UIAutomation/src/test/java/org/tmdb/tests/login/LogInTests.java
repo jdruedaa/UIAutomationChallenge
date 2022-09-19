@@ -30,7 +30,7 @@ public class LogInTests extends Hooks {
         }
         catch (NoSuchElementException noSuchElementException)
         {
-            System.out.println("Successful Login Test Failed");;
+            System.out.println("Successful Login Test Failed");
         }
     }
 

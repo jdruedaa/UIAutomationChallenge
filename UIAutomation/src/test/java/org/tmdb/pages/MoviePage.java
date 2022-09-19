@@ -12,10 +12,6 @@ import java.util.List;
 
 public class MoviePage extends BasePage {
 
-    /*@FindBy(css = ".genres")
-    private WebElement movieGenres;
-    */
-
     @FindBy(css = ".genres")
     private WebElement movieGenres;
 
@@ -45,12 +41,6 @@ public class MoviePage extends BasePage {
         return targetGenre;
     }
 
-    /*public String findGenreFromList(String genre)
-    {
-        WebElement targetGenre = movieGenres.findElement(By.cssSelector("[href*="+ genre +"]"));
-        return targetGenre.getText();
-    }*/
-
     public ActorProfilePage enterActorProfilePage()
     {
         WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -60,6 +50,7 @@ public class MoviePage extends BasePage {
 
     public String getMovieTitle()
     {
-        return movieTitle.getText();
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        return explicitWait.until(ExpectedConditions.visibilityOf(movieTitle)).getText();
     }
 }

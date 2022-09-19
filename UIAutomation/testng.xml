@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="TMDB tests">
-    <test name="TMDB Acting Timeline">
-        <classes>
-            <class name="org.tmdb.tests.actingtimeline.ActingTimelineTests"/>
-        </classes>
-    </test>
+<suite name="TMDB tests" parallel="tests">
     <test name="TMDB Log In">
         <parameter name="wrongPassword" value="1"/>
         <classes>
@@ -22,6 +17,11 @@
         <parameter name="filterGenre" value="action"/>
         <classes>
             <class name="org.tmdb.tests.toprated.TopRatedTests"/>
+        </classes>
+    </test>
+    <test name="TMDB Acting Timeline">
+        <classes>
+            <class name="org.tmdb.tests.actingtimeline.ActingTimelineTests"/>
         </classes>
     </test>
 </suite>
