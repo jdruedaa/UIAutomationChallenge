@@ -36,14 +36,14 @@ public class HomePage extends BasePage {
 
     public LogInPage logIn()
     {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         explicitWait.until(ExpectedConditions.elementToBeClickable(logInButton)).click();
         return new LogInPage(driver);
     }
 
     public SearchResultsPage searchMovie(String movieTitle)
     {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         searchBar.sendKeys(movieTitle);
         explicitWait.until(ExpectedConditions.elementToBeClickable(searchButton)).click();
         return new SearchResultsPage(driver);
@@ -51,7 +51,7 @@ public class HomePage extends BasePage {
 
     public TopRatedPage enterTopRatedMovies()
     {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         Actions action = new Actions(driver);
         action.moveToElement(moviesDropDownMenu).perform();
         explicitWait.until(ExpectedConditions.elementToBeClickable(topRatedButton)).click();
@@ -60,7 +60,7 @@ public class HomePage extends BasePage {
 
     public MoviePage enterMovieWithActors()
     {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement firstPopularMoviePoster = popularMoviesScroller.findElement(By.cssSelector(".image a"));
         explicitWait.until(ExpectedConditions.elementToBeClickable(firstPopularMoviePoster)).click();
         return new MoviePage(driver);

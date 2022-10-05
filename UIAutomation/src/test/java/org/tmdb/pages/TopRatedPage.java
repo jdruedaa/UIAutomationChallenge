@@ -40,7 +40,7 @@ public class TopRatedPage extends BasePage {
     }
 
     public MoviePage filterMoviesByActionGenre(){
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         explicitWait.until(ExpectedConditions.elementToBeClickable(filtersButton)).click();
         Actions action = new Actions(driver);
         WebElement actionMovieFilterButtonWE = driver.findElement(actionMovieFilterButton);
@@ -59,7 +59,7 @@ public class TopRatedPage extends BasePage {
 
     public void sortMoviesByDateAscending()
     {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         explicitWait.until(ExpectedConditions.elementToBeClickable(sortDropdownMenu)).click();
         explicitWait.until(ExpectedConditions.elementToBeClickable(sortMoviesReleaseDateAscendingButton)).click();
         explicitWait.until(ExpectedConditions.elementToBeClickable(searchButton)).click();

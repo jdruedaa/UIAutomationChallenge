@@ -43,14 +43,14 @@ public class MoviePage extends BasePage {
 
     public ActorProfilePage enterActorProfilePage()
     {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         explicitWait.until(ExpectedConditions.elementToBeClickable(firstActor)).click();
         return new ActorProfilePage(driver);
     }
 
     public String getMovieTitle()
     {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         return explicitWait.until(ExpectedConditions.visibilityOf(movieTitle)).getText();
     }
 }

@@ -29,7 +29,7 @@ public class LogInPage extends BasePage{
 
     public void logInToUserAccount(String username, String password)
     {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         usernameTextInputField.sendKeys(username);
         passwordTextInputField.sendKeys(password);
         explicitWait.until(ExpectedConditions.elementToBeClickable(submitLogInFormButton)).click();
@@ -37,7 +37,7 @@ public class LogInPage extends BasePage{
 
     public List<String> getLogInErrorMessages()
     {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         List<String> messages = new ArrayList<>();
         explicitWait.until(ExpectedConditions.visibilityOf(logInErrorStatusCard));
         WebElement mainErrorMessage = logInErrorStatusCard.findElement(By.cssSelector(".background_color"));
